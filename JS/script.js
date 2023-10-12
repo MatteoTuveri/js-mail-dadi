@@ -12,23 +12,46 @@ const mailList = [
     'lordciccio@sipropriolui.com',
     'nonsopiucheinventamme@aiuto.com'
 ];
-let submit = document.querySelector('button');
+
+let submit = document.querySelector('.btn-primary');
 submit.addEventListener('click',
     function () {
+
         let mail = document.getElementById('mail').value.toLowerCase();
-        let validMail = 0;
+        let validMail = false;
         let mailHelp = document.getElementById('emailHelp');
+        let user = getRndInteger(0, 6);
+        let computer = getRndInteger(0, 6);
+        let winner;
+
         for (let i = 0; i <= (mailList.length - 1); i++) {
             let listedMail = mailList[i];
             if (mail === listedMail) {
-                mailHelp.classList += 'text-succes';
-                mailHelp.innerHTML=`E-mail valida`;
+                validMail = true;
             }
         }
-        if(validMail === 0){
-            mailHelp.classList += 'text-danger';
-            mailHelp.innerHTML=`E-mail non registrata`;
+        if (validMail) {
+            mailHelp.className = "text-success";
+            mailHelp.innerHTML = `E-mail valida`;
+            if (user > computer) {
+                winner = 'user'
+            }
+            else if (computer > user) {
+                winner = 'computer'
+            }
+            else {
+                winner = 'pareggio'
+            }
+    
         }
+        else {
+            mailHelp.className = "text-danger";
+            mailHelp.innerHTML = `E-mail non registrata`;
+        }
+        console.log(user)
+        console.log(computer)
+        console.log(winner)
+
     }
 );
 
