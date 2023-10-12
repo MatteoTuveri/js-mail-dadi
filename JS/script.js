@@ -64,7 +64,6 @@ submit.addEventListener('click',
             mailHelp.className = "text-danger";
             mailHelp.innerHTML = `E-mail non registrata`;
         }
-        console.log(winner);
 
     }
 );
