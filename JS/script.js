@@ -26,6 +26,7 @@ submit.addEventListener('click',
 
         for (let i = 0; i <= (mailList.length - 1); i++) {
             let listedMail = mailList[i];
+
             if (mail === listedMail) {
                 validMail = true;
             }
@@ -42,7 +43,7 @@ submit.addEventListener('click',
             else {
                 winner = 'pareggio'
             }
-    
+
         }
         else {
             mailHelp.className = "text-danger";
