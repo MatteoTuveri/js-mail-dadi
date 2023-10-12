@@ -13,6 +13,15 @@ const mailList = [
     'nonsopiucheinventamme@aiuto.com'
 ];
 
+const rotate = [
+    "cube cube--rotate show-front",
+    "cube cube--rotate show-back",
+    "cube cube--rotate show-right",
+    "cube cube--rotate show-left",
+    "cube cube--rotate show-top",
+    "cube cube--rotate show-bottom",
+]
+
 let submit = document.querySelector('.btn-primary');
 submit.addEventListener('click',
     function () {
@@ -20,9 +29,11 @@ submit.addEventListener('click',
         let mail = document.getElementById('mail').value.toLowerCase();
         let validMail = false;
         let mailHelp = document.getElementById('emailHelp');
-        let user = getRndInteger(0, 6);
-        let computer = getRndInteger(0, 6);
-        let winner;
+        let userDice = document.getElementById('user');
+        let computerDice = document.getElementById('computer');
+        let user = getRndInteger(1, 6);
+        let computer = getRndInteger(1, 6);
+        let winner = document.getElementById('winner');
 
         for (let i = 0; i <= (mailList.length - 1); i++) {
             let listedMail = mailList[i];
@@ -34,14 +45,18 @@ submit.addEventListener('click',
         if (validMail) {
             mailHelp.className = "text-success";
             mailHelp.innerHTML = `E-mail valida`;
+            userDice.className = rotate[user -1];
+            computerDice.className = rotate[computer -1];
+
             if (user > computer) {
-                winner = 'user'
+                winner.innerHTML = 'user'
+
             }
             else if (computer > user) {
-                winner = 'computer'
+                winner.innerHTML = 'computer'
             }
             else {
-                winner = 'pareggio'
+                winner.innerHTML = 'pareggio'
             }
 
         }
@@ -49,9 +64,7 @@ submit.addEventListener('click',
             mailHelp.className = "text-danger";
             mailHelp.innerHTML = `E-mail non registrata`;
         }
-        console.log(user)
-        console.log(computer)
-        console.log(winner)
+        console.log(winner);
 
     }
 );
